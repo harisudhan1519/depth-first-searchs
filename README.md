@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: HARISUDHAN S </h3>
+<h3>Register Number:  212224240048   </h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -54,6 +54,46 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
 
+# PROGRAM:
+```
+from collections import defaultdict
+
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+    for neighbour in graph[start]:
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
+    return path
+
+# Create graph
+graph = defaultdict(list)
+
+# Get number of nodes and edges from user
+n, e = map(int, input("Enter number of nodes and edges (e.g., 5 4): ").split())
+
+print("Enter each edge as two node labels separated by space (e.g., A B):")
+for i in range(e):
+    u, v = input(f"Edge {i+1}: ").split()
+    graph[u].append(v)
+    graph[v].append(u)  # Assuming undirected graph
+
+# Get starting node from user
+start = input("Enter starting node for DFS: ")
+
+# Initialize visited dictionary and path list
+visited = defaultdict(bool)
+path = []
+
+# Run DFS
+traversed_path = dfs(graph, start, visited, path)
+
+# Output result
+print("\nDFS Traversal Path:")
+print(traversed_path)
+```
+
+
 <hr>
 <h3>Sample Input</h3>
 <hr>
@@ -87,6 +127,14 @@ F H <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+
+# OUTPUT:
+
+<img width="770" height="439" alt="image" src="https://github.com/user-attachments/assets/95b5799f-f446-4637-9864-f113d6f1a630" />
+
+<img width="777" height="377" alt="image" src="https://github.com/user-attachments/assets/948d2a36-8cec-4ede-aca7-768e40b11058" />
+
+
 
 <hr>
 <h3>Result:</h3>
